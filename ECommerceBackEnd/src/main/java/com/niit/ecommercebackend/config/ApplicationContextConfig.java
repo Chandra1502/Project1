@@ -16,11 +16,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.ecommercebackend.dao.CategoryDAO;
 import com.niit.ecommercebackend.dao.CategoryDAOImpl;
+import com.niit.ecommercebackend.dao.ProductDAO;
+import com.niit.ecommercebackend.dao.ProductDAOImpl;
 import com.niit.ecommercebackend.dao.SupplierDAO;
 import com.niit.ecommercebackend.dao.SupplierDAOImpl;
 import com.niit.ecommercebackend.dao.UserDAO;
 import com.niit.ecommercebackend.dao.UserDAOImpl;
 import com.niit.ecommercebackend.model.Category;
+import com.niit.ecommercebackend.model.Product;
 import com.niit.ecommercebackend.model.Supplier;
 import com.niit.ecommercebackend.model.User;
 
@@ -61,6 +64,7 @@ public class ApplicationContextConfig {
 		sessionBuilder.addAnnotatedClass(User.class);
 		sessionBuilder.addAnnotatedClass(Category.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
+		sessionBuilder.addAnnotatedClass(Product.class);
 		System.out.println("Session Factory");
 		return sessionBuilder.buildSessionFactory();
 	}
@@ -120,5 +124,21 @@ public class ApplicationContextConfig {
 	{
 		System.out.println("supplier");
 		return new Supplier();
+	}
+	
+	@Autowired
+	@Bean(name="productDAO")
+	public ProductDAO getProductDAO(SessionFactory sessionFactory)
+	{
+		System.out.println("productDAO");
+		return new ProductDAOImpl();
+	}
+	
+	@Autowired
+	@Bean(name="product")
+	public Product getProduct()
+	{
+		System.out.println("product");
+		return new Product();
 	}
 }
