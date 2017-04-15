@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecommercebackend.model.Category;
 
@@ -32,6 +33,23 @@ public class CategoryDAOImpl implements CategoryDAO {
 		s.saveOrUpdate(category);
 		tx.commit();
 		return true;
+	}
+	
+	public boolean delete(Category category) {
+		
+		try{
+			Session s = sessionFactory.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			//Category c = (Category)s.get(Category.class, new Integer(8));
+			//s.delete(c);
+			s.delete(category);
+			tx.commit();
+			return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

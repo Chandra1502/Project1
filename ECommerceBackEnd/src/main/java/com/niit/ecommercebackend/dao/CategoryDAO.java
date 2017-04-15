@@ -5,4 +5,7 @@ import com.niit.ecommercebackend.model.Category;
 public interface CategoryDAO {
 	
 	public boolean saveOrUpdate(Category category);
+	
+	public boolean delete(Category category);
+	
 }

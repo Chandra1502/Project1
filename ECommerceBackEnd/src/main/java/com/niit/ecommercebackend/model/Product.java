@@ -5,9 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="product")
@@ -16,19 +19,27 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int product_id;
+	@Transient
+	private MultipartFile image;
 	@NotNull(message = "productname cannot be blank")
 	private String product_name;
-	@NotNull(message = "product quantity cannot be blank")
+	@Min(1)
 	private String product_quantity;
-	@NotNull(message = "product weight cannot be blank")
+	@Min(1)
 	private String product_weight;
-	@NotNull(message = "price cannot be blank")
+	@Min(1)
 	private String product_price;
 	public int getProduct_id() {
 		return product_id;
 	}
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
+	}
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
 	public String getProduct_name() {
 		return product_name;
