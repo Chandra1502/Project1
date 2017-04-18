@@ -30,11 +30,32 @@ public class HomeController {
 			mv.addObject("LoggedInUser", "User");
 			return mv;
 		}
+		else if(pass.equals("admin")) {
+			mv = new ModelAndView("AdminHome");
+			mv.addObject("LoggedInUser", "Admin");
+			return mv;
+		}
 		else
 		{
 			mv=new ModelAndView("Login");
 			return mv;
 		}
+	}
+	
+	@RequestMapping("/AddCategory")
+	public ModelAndView showCategory()
+	{
+		ModelAndView mv= new ModelAndView("AddCategory");
+		mv.addObject("LoggedInUser", "Admin");
+		return mv;
+	}
+	
+	@RequestMapping("/AddSupplier")
+	public ModelAndView showSupplier()
+	{
+		ModelAndView mv= new ModelAndView("AddSupplier");
+		mv.addObject("LoggedInUser", "Admin");
+		return mv;
 	}
 }
 

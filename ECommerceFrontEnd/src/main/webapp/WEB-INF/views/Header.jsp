@@ -14,10 +14,18 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-	body{ background-color: skyblue; }</style>
+body {
+	background-image : url("images/BG.jpg");
+	background-attachment: fixed;
+	background-size:100% 100%;
+	
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 60%;    
+      margin: auto;
+  }
+</style>
 </head>
-<body bgcolor="Skyblue">
-	<center>
-		<h1>Your Shop</h1>
-	</center>
-	<a href="Login">Sign In</a>
+<body>
+		<center><h1>TouchM</h1></center>
