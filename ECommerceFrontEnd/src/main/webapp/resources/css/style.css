@@ -1,0 +1,16 @@
+.body{
+	background-color: red;
+	background-image: url("resources/images/BG.jpg")
+	
+}
+
+.head{
+	font-family : calibri;
+	text-align:center;
+}
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 60%;    
+      margin: auto;
+  }

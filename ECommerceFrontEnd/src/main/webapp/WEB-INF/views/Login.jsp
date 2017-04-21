@@ -1,14 +1,11 @@
 <%@include file="Header.jsp"%>
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<div class="col-xs-6">
+		<div class="col-md-6 col-xs-12">
 			<form action="Validate">
+				<h4 align="left" style="color: midnightblue">Existing User,Login here:</h4>
 				<table style="float:left">
-					<tr>
-						<th align="left" style="color: midnightblue">Existing User,
-							Login here:</th>
-					</tr>
 					<tr>
 						<th>Username</th>
 						<td align="left"><input type="text" name="username"></td>
@@ -24,12 +21,9 @@
 				</table>
 			</form>
 		</div>
-		<div class="col-xs-6">
+		<div class="col-md-6 col-xs-12">
+			<h4 style="color: midnightblue; float: right;">New User, Register here:</h4>
 			<table style="float:right">
-				<tr>
-					<th></th>
-					<th style="color: midnightblue; float: right;">New User, Register here:</th>
-				</tr>
 				<tr>
 					<th style="float: left">Username</th>
 					<td><input type="text" name="user"></td>
