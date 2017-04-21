@@ -1,5 +1,7 @@
 <%@include file="Header.jsp"%>
 
+<!-- This is to check if the comment is being uploaded to Git. -->
+
 <a href="Login">Sign In</a>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -14,7 +16,7 @@
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="images/AndroidLogo.jpg" alt="Android">
+			<img src="resources/images/AndroidLogo.jpg" alt="Android">
 			<div class="carousel-caption">
 				<h3>Android</h3>
 				<!-- <p>The atmosphere in Chania has a touch of Florence and Venice.</p> -->
@@ -22,7 +24,7 @@
 		</div>
 
 		<div class="item">
-			<img src="images/BlackberryOSLogo.jpeg" alt="BlackBerry">
+			<img src="resources/images/BlackberryOSLogo.jpeg" alt="BlackBerry">
 			<div class="carousel-caption">
 				<h3>Blackberry</h3>
 				<!-- <p>The atmosphere in Chania has a touch of Florence and Venice.</p> -->
@@ -30,7 +32,7 @@
 		</div>
 		
 		<div class="item">
-			<img src="images/AppleLogo.jpg" alt="Apple">
+			<img src="resources/images/AppleLogo.jpg" alt="Apple">
 			<div class="carousel-caption">
 				<h3>Apple</h3>
 				<!-- <p>Beatiful flowers in Kolymbari, Crete.</p> -->
@@ -38,7 +40,7 @@
 		</div>
 
 		<div class="item">
-			<img src="images/WindowsLogoJPG.jpg" alt="Windows">
+			<img src="resources/images/WindowsLogoJPG.jpg" alt="Windows">
 			<div class="carousel-caption">
 				<h3>Windows</h3>
 				<!-- <p>Beatiful flowers in Kolymbari, Crete.</p> -->
