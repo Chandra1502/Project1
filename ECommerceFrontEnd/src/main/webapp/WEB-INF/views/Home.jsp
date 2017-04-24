@@ -2,7 +2,7 @@
 
 <!-- This is to check if the comment is being uploaded to Git. -->
 
-<a href="Login">Sign In</a>
+
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->

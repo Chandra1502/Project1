@@ -1,12 +1,27 @@
 .body{
-	background-color: red;
-	background-image: url("resources/images/BG.jpg")
-	
+	background-color: #4682B4;
+	font-family: Calibri;
+	color: white;
 }
 
-.head{
-	font-family : calibri;
+.container-fluid {
+	margin:0px;
+   padding:0px;
+}
+
+.middle{	
 	text-align:center;
+	font-size:20px;
+}
+
+.name{
+	margin-bottom:0px;
+}
+
+p{
+	font-size:20px;
+	text-align:center;
+	padding : 5px;
 }
 
 .carousel-inner > .item > img,
