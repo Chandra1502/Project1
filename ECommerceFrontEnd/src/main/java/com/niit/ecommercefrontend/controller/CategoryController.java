@@ -3,12 +3,10 @@ package com.niit.ecommercefrontend.controller;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -80,9 +78,10 @@ public class CategoryController {
 		public ModelAndView deleteCategory(@PathVariable("id")String id,Model model)
 		{
 		int i=Integer.parseInt(id);
-		model.addAttribute("category", categoryDAO.get(i));
+		category = categoryDAO.get(i);
+		/*model.addAttribute("category", categoryDAO.get(i));*/
 		categoryDAO.delete(category);
-		/*model.addAttribute("categoryList", categoryDAO.list());*/
+		model.addAttribute("categoryList", categoryDAO.list());
 		ModelAndView mv=new ModelAndView("AddCategory");
 		mv.addObject("addcategory", 0);
 		return mv;

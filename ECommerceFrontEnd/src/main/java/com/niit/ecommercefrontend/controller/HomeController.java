@@ -19,6 +19,12 @@ public class HomeController {
 		return "Home";
 	}
 	
+	@RequestMapping("/Home")
+	public String showHomeOnImage()
+	{
+		return "Home";
+	}
+	
 	@RequestMapping("/Login")
 	public String showLogin()
 	{
@@ -49,13 +55,7 @@ public class HomeController {
 	
 	
 	
-	@RequestMapping("/AddSupplier")
-	public ModelAndView showSupplier()
-	{
-		ModelAndView mv= new ModelAndView("AddSupplier");
-		mv.addObject("LoggedInUser", "Admin");
-		return mv;
-	}
+	
 }
 
  

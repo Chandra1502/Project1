@@ -20,6 +20,14 @@ import com.niit.ecommercebackend.model.Supplier;
 @Controller
 public class SupplierController {
 	
+	@RequestMapping("/AddSupplier")
+	public ModelAndView showSupplier()
+	{
+		ModelAndView mv= new ModelAndView("AddSupplier");
+		mv.addObject("LoggedInUser", "Admin");
+		return mv;
+	}
+	
 	@Autowired
 	private SupplierDAO supplierDAO;
 	

@@ -18,33 +18,29 @@
 <body class="body">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 col-md-3 col-lg-2 myImage">
+			<div class="col-xs-12 col-md-3 col-lg-3">
 				<a href="Home"> <img src="resources/images/TMLogo.jpg"
-					alt="TouchM" style="float: left; width: 100px; height: 90px;">
+					alt="TouchM" style="float: left; width: 100px; height: 90px;"/>
 				</a>
 			</div>
-			<div class="col-xs-12 col-md-6 col-lg-8">
+			<div class="col-xs-12 col-md-6 col-lg-6">
 				<div class="middle">
 					<h1 class="name">
-						<b>TouchM</b>
+						<b style="color:#ffff00">TouchM</b>
 					</h1>
-					<p>The One stop site for Smart Phones.
+					<p >The One stop site for Smart Phones.
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-3 col-lg-2 myGlyph">
-				<p style="margin: 0px;font-size:15px">Contact Us:</p>
-				<p style="margin: 0px">
-					<span class="glyphicon glyphicon-earphone" style="color: #ffff00"></span>
-					+91 9876543210
-				</p>
-				<p style="margin: 0px">
-					<span class="glyphicon glyphicon-envelope" style="color: #ffff00"></span>
-					touchm@gmail.com
-				</p>
+			<div class="col-xs-12 col-md-3 col-lg-3">
+				<div class="myDetails">
+					<p>Contact Us:</p>
+					<p><span class="glyphicon glyphicon-earphone" style="color: #ffff00"></span>+91 9876543210</p>
+					<p><span class="glyphicon glyphicon-envelope" style="color: #ffff00"></span>touchm@gmail.com</p>
+				</div>
 			</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-inverse" style="background-color:yellow">
+	<nav class="navbar navbar-inverse" style="background-color:black">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -67,7 +63,7 @@
           </ul>
         </li>
         <li><a href="#">About Us</a></li>
-        <li><a href="#">Mobiles</a></li>
+        <li><a href="#">Phones</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="Login"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

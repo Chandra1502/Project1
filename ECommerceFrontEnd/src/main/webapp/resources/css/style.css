@@ -2,6 +2,8 @@
 	background-color: #4682B4;
 	font-family: Calibri;
 	color: white;
+	margin:0px;
+	border:0px;
 }
 
 .container-fluid {
@@ -18,10 +20,16 @@
 	margin-bottom:0px;
 }
 
-p{
-	font-size:20px;
-	text-align:center;
-	padding : 5px;
+.myDetails{
+	margin: 1px;
+	border :0px;
+	font-size:15px;
+	padding:1px;
+	text-align:right;
+}
+
+.navbar navbar-inverse{
+	position : fixed;
 }
 
 .carousel-inner > .item > img,
