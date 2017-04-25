@@ -9,6 +9,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.niit.ecommercebackend.model.Category;
 
 @Repository(value="categoryDAO")
@@ -56,7 +58,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public Category get(int id) {
 		String hql = "from Category where category_id= " + id;
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction t = s.beginTransaction();
 		Query query = s.createQuery(hql);
 		List<Category> list = query.list();
@@ -71,8 +73,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
+	@Transactional
 	public List<Category> list() {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction t = s.beginTransaction();
 		String hql = "from Category";
 		Query query = s.createQuery(hql);
