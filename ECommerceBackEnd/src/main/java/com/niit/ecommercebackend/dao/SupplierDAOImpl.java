@@ -70,7 +70,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
 	@Override
 	public List<Supplier> list() {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction t = s.beginTransaction();
 		String hql = "from Supplier";
 		Query query = s.createQuery(hql);

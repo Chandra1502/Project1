@@ -24,7 +24,7 @@ public class SupplierController {
 	public ModelAndView showSupplier()
 	{
 		ModelAndView mv= new ModelAndView("AddSupplier");
-		mv.addObject("LoggedInUser", "Admin");
+		mv.addObject("supplierList", supplierDAO.list());
 		return mv;
 	}
 	
