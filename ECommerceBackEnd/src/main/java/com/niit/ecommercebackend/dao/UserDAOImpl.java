@@ -1,5 +1,8 @@
 package com.niit.ecommercebackend.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -32,6 +35,68 @@ public class UserDAOImpl implements UserDAO {
 		s.saveOrUpdate(user);
 		tx.commit();
 		return true;
+	}
+
+	
+	public boolean delete(User user) {
+		try{
+			Session s = sessionFactory.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			s.delete(user);
+			tx.commit();
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public User get(String email) {
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		
+		String str = "from User where emailid = '"+email+"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(str);
+		List<User> list = query.list();
+		
+		if(list != null && list.isEmpty()){
+			tx.commit();
+		}
+		return list.get(0);
+	}
+
+	@Override
+	public List<User> list() {
+		String hql = "from User";
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Query query = s.createQuery(hql);
+		List<User> list = query.list();
+		tx.commit();
+		return list;
+	}
+
+	@Override
+	public User getById(int id) {
+		try{
+			String hql = "from User where userid=" + id;
+			Session s = sessionFactory.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			Query query = s.createQuery(hql);
+			List<User> list = query.list();
+			tx.commit();
+			if(list==null)
+				return null;
+			else
+				return list.get(0);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	
