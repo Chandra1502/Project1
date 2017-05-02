@@ -72,6 +72,7 @@ public class SupplierController {
 	{
 	int i=Integer.parseInt(id);
 	supplier = supplierDAO.get(i);
+	System.out.println(supplier.getSupplier_name());
 	supplierDAO.delete(supplier);
 	model.addAttribute("supplierList", supplierDAO.list());
 	ModelAndView mv=new ModelAndView("AddSupplier");

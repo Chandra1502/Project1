@@ -1,5 +1,6 @@
 package com.niit.ecommercebackend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +19,10 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int category_id;
 	@NotNull(message = "category name cannot be blank")
+	@Column(nullable = false)
 	private String category_name;
 	@NotNull(message = "description cannot be blank")
+	@Column(nullable = false)
 	private String category_description;
 	public int getCategory_id() {
 		return category_id;

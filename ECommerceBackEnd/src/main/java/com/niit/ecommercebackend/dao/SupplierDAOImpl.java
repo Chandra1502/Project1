@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecommercebackend.model.Supplier;
 
@@ -37,10 +38,12 @@ public class SupplierDAOImpl implements SupplierDAO {
 		return true;
 	}
 	
-	public boolean delete(Supplier supplier){
-		try
-		{
-			Session s = sessionFactory.getCurrentSession();
+	@Override
+	@Transactional
+	public boolean delete(Supplier supplier) {
+		
+		try{
+			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
 			s.delete(supplier);
 			tx.commit();
@@ -49,13 +52,13 @@ public class SupplierDAOImpl implements SupplierDAO {
 		catch(Exception e){
 			e.printStackTrace();
 			return false;
-		}	
+		}
 	}
 
 	@Override
 	public Supplier get(int id) {
 		String hql = "from Supplier where supplier_id= " + id;
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction t = s.beginTransaction();
 		Query query = s.createQuery(hql);
 		List<Supplier> list = query.list();
@@ -69,6 +72,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	@Override
+	@Transactional
 	public List<Supplier> list() {
 		Session s = sessionFactory.openSession();
 		Transaction t = s.beginTransaction();
