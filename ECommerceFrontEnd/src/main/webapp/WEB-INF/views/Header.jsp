@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome</title>
+<title>TouchM</title>
 <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
 			<div class="col-xs-12 col-md-6 col-lg-6">
 				<div class="middle">
 					<h1 class="name">
-						<b style="color:#ffff00">TouchM</b>
+						<b style="color:#034f84">TouchM</b>
 					</h1>
 					<p >The One stop site for Smart Phones.
 				</div>
@@ -34,8 +34,8 @@
 			<div class="col-xs-12 col-md-3 col-lg-3">
 				<div class="myDetails">
 					<p>Contact Us:</p>
-					<p><span class="glyphicon glyphicon-earphone" style="color: #ffff00"></span>+91 9876543210</p>
-					<p><span class="glyphicon glyphicon-envelope" style="color: #ffff00"></span>touchm@gmail.com</p>
+					<p><span class="glyphicon glyphicon-earphone" style="color: #034f84"></span>+91 9876543210</p>
+					<p><span class="glyphicon glyphicon-envelope" style="color: #034f84"></span>touchm@gmail.com</p>
 				</div>
 			</div>
 		</div>
@@ -66,8 +66,8 @@
         <li><a href="#">Phones</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="Login"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>

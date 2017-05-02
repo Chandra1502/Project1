@@ -1,9 +1,9 @@
-.body{
-	background-color: #4682B4;
+.body {
+	background-color: #f0f0f0;
 	font-family: Calibri;
-	color: white;
 	margin:0px;
 	border:0px;
+	padding:0px;
 }
 
 .container-fluid {
@@ -28,12 +28,68 @@
 	text-align:right;
 }
 
-.navbar navbar-inverse{
-	position : fixed;
-}
 
+/* Carousel css */
 .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 60%;    
       margin: auto;
-  }
+      }
+
+.dropdown-menu{
+	font-size:15px;
+}  
+  
+  
+/* css for Login Form */ 
+
+/* form {
+	width : 50px;
+    border: 2px solid #f1f1f1;
+    font-family:calibri;
+}
+
+h2{
+	color:orange;
+}
+
+input[type=text], input[type=password] {
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    font-family:calibri;
+    font-size:15px;
+}
+
+.container {
+    padding: 10px;
+}
+
+span.password {
+    float: right;
+    padding-top: 16px;
+} */
+
+ 

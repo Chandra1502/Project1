@@ -25,7 +25,7 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Add Products</a></li>
+						<li><a href="AddProduct">Add Products</a></li>
 						<li><a href="#">View</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
