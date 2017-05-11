@@ -13,13 +13,13 @@ public class CategoryTest {
 		context.scan("com");
 		context.refresh();
 		
-		CategoryDAO categoryDAO = (CategoryDAO)context.getBean("categoryDAO");
+		/*CategoryDAO categoryDAO = (CategoryDAO)context.getBean("categoryDAO");
 		Category category = (Category)context.getBean("category");
 		category.setCategory_name("Android");
 		category.setCategory_description("Welcome to the world of Android");
 		categoryDAO.saveOrUpdate(category);
 		//categoryDAO.delete(category);
-		System.out.println("Deleted");
+		System.out.println("Deleted");*/
 
 	}
 

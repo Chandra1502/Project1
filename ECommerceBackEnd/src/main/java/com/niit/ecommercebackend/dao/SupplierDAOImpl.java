@@ -31,7 +31,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	public boolean saveOrUpdate(Supplier supplier) {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.saveOrUpdate(supplier);
 		tx.commit();

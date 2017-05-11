@@ -30,7 +30,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public boolean saveOrUpdate(User user) {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.saveOrUpdate(user);
 		tx.commit();
@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	public boolean delete(User user) {
 		try{
-			Session s = sessionFactory.getCurrentSession();
+			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
 			s.delete(user);
 			tx.commit();
@@ -71,7 +71,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> list() {
 		String hql = "from User";
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		Query query = s.createQuery(hql);
 		List<User> list = query.list();
@@ -83,7 +83,7 @@ public class UserDAOImpl implements UserDAO {
 	public User getById(int id) {
 		try{
 			String hql = "from User where userid=" + id;
-			Session s = sessionFactory.getCurrentSession();
+			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
 			Query query = s.createQuery(hql);
 			List<User> list = query.list();

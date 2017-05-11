@@ -31,7 +31,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	public boolean saveOrUpdate(Category category) {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.saveOrUpdate(category);
 		tx.commit();
@@ -41,7 +41,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public boolean delete(Category category) {
 		
 		try{
-			Session s = sessionFactory.getCurrentSession();
+			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
 			//Category c = (Category)s.get(Category.class, new Integer(8));
 			//s.delete(c);
