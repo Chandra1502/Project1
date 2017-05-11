@@ -108,6 +108,7 @@ public class HomeController {
 	public ModelAndView showLogout(HttpServletRequest request, HttpSession session){
 		System.out.println("logout");
 		ModelAndView mv = new ModelAndView("Home");
+		session.setAttribute("LogOutMessage","You have Successfully Logged Out.");
 		session.invalidate();
 		session = request.getSession(true);
 		mv.addObject("LogOutMessage","You have Successfully Logged Out.");

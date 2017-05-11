@@ -14,6 +14,10 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.ecommercebackend.dao.CartDAO;
+import com.niit.ecommercebackend.dao.CartDAOImpl;
+import com.niit.ecommercebackend.dao.CartItemDAO;
+import com.niit.ecommercebackend.dao.CartItemDAOImpl;
 import com.niit.ecommercebackend.dao.CategoryDAO;
 import com.niit.ecommercebackend.dao.CategoryDAOImpl;
 import com.niit.ecommercebackend.dao.ProductDAO;
@@ -22,6 +26,8 @@ import com.niit.ecommercebackend.dao.SupplierDAO;
 import com.niit.ecommercebackend.dao.SupplierDAOImpl;
 import com.niit.ecommercebackend.dao.UserDAO;
 import com.niit.ecommercebackend.dao.UserDAOImpl;
+import com.niit.ecommercebackend.model.Cart;
+import com.niit.ecommercebackend.model.CartItem;
 import com.niit.ecommercebackend.model.Category;
 import com.niit.ecommercebackend.model.Product;
 import com.niit.ecommercebackend.model.Supplier;
@@ -65,6 +71,8 @@ public class ApplicationContextConfig {
 		sessionBuilder.addAnnotatedClass(Category.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
 		sessionBuilder.addAnnotatedClass(Product.class);
+		sessionBuilder.addAnnotatedClass(Cart.class);
+		sessionBuilder.addAnnotatedClass(CartItem.class);
 		System.out.println("Session Factory");
 		return sessionBuilder.buildSessionFactory();
 	}
@@ -141,4 +149,37 @@ public class ApplicationContextConfig {
 		System.out.println("product");
 		return new Product();
 	}
+	
+	@Autowired
+	@Bean(name="cartDAO")
+	public CartDAO getCartDAO(SessionFactory sessionFactory)
+	{
+		System.out.println("cartDAO");
+		return new CartDAOImpl();
+	}
+	
+	@Autowired
+	@Bean(name="cart")
+	public Cart getCart()
+	{
+		System.out.println("cart");
+		return new Cart();
+	}
+	
+	@Autowired
+	@Bean(name="cartItemDAO")
+	public CartItemDAO getCartItemDAO(SessionFactory sessionFactory)
+	{
+		System.out.println("cartItemDAO");
+		return new CartItemDAOImpl();
+	}
+	
+	@Autowired
+	@Bean(name="cartItem")
+	public CartItem getCartItem()
+	{
+		System.out.println("cartItem");
+		return new CartItem();
+	}
+	
 }
