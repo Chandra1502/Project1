@@ -33,7 +33,7 @@ public class Product {
 	@Min(1)
 	private String product_weight;
 	@Min(1)
-	private String product_price;
+	private double product_price;
 	
 	@Column(name="category_id")
 	private int category_id;
@@ -103,10 +103,10 @@ public class Product {
 	public void setProduct_weight(String product_weight) {
 		this.product_weight = product_weight;
 	}
-	public String getProduct_price() {
+	public double getProduct_price() {
 		return product_price;
 	}
-	public void setProduct_price(String product_price) {
+	public void setProduct_price(double product_price) {
 		this.product_price = product_price;
 	}
 	

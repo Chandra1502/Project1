@@ -40,7 +40,9 @@
 						<li><a href="AddSupplier">Add Suppliers</a></li>
 						<li><a href="#">View</a></li>
 					</ul></li>
-
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			<li><a href="perform_logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 			</ul>
 		</div>
 	</nav>

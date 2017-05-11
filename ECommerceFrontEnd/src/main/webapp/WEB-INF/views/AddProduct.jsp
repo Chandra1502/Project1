@@ -44,6 +44,7 @@
 </style>
 </head>
 <body>
+	<center>
 		<form:form method="POST" action="addprod" commandName="product"
 			enctype="multipart/form-data">
 			<table>

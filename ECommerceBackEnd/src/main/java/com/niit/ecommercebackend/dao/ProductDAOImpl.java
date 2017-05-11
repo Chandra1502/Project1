@@ -32,7 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public boolean saveOrUpdate(Product product) {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.saveOrUpdate(product);
 		tx.commit();
@@ -41,7 +41,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public boolean delete(Product product) {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.delete(product);
 		tx.commit();
