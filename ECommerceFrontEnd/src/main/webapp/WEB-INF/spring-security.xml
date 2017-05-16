@@ -16,14 +16,15 @@
 		<intercept-url pattern="/AddProduct" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/AddCategory" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/AddSupplier" access="hasRole('ROLE_ADMIN')" />
-
+		<intercept-url pattern="/addcart" access="hasRole('ROLE_USER')" />
+		
 		<!-- Access Denied Page -->
 		<access-denied-handler error-page="/index" />
 		<form-login login-page="/Login" default-target-url="/"
 			login-processing-url="/perform_login" authentication-failure-url="/Login"
 			authentication-success-forward-url="/login_session_attributes" />
 		<logout logout-url="/perform_logout" invalidate-session="true"
-			logout-success-url="/" />
+			logout-success-url="/" delete-cookies="JSESSIONID"/>
 
 		<!-- To disable the security tokens -->
 		<csrf disabled="true" />

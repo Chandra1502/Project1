@@ -29,11 +29,11 @@ public class Product {
 	@NotNull(message = "productname cannot be blank")
 	private String product_name;
 	@Min(1)
-	private String product_quantity;
+	private int product_quantity;
 	@Min(1)
-	private String product_weight;
+	private int product_weight;
 	@Min(1)
-	private double product_price;
+	private int product_price;
 	
 	@Column(name="category_id")
 	private int category_id;
@@ -91,22 +91,22 @@ public class Product {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-	public String getProduct_quantity() {
+	public int getProduct_quantity() {
 		return product_quantity;
 	}
-	public void setProduct_quantity(String product_quantity) {
+	public void setProduct_quantity(int product_quantity) {
 		this.product_quantity = product_quantity;
 	}
-	public String getProduct_weight() {
+	public int getProduct_weight() {
 		return product_weight;
 	}
-	public void setProduct_weight(String product_weight) {
+	public void setProduct_weight(int product_weight) {
 		this.product_weight = product_weight;
 	}
-	public double getProduct_price() {
+	public int getProduct_price() {
 		return product_price;
 	}
-	public void setProduct_price(double product_price) {
+	public void setProduct_price(int product_price) {
 		this.product_price = product_price;
 	}
 	

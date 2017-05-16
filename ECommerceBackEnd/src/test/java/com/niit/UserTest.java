@@ -13,7 +13,7 @@ public class UserTest {
 			context.scan("com");
 			context.refresh();
 			
-			UserDAO userDAO=(UserDAO)context.getBean("userDAO");
+			/*UserDAO userDAO=(UserDAO)context.getBean("userDAO");
 			User user=(User)context.getBean("user");
 			//user.setUserid(1);
 			user.setUsername("user1");
@@ -24,6 +24,6 @@ public class UserTest {
 			user.setRole("Admin");
 			user.setPhno("9876543210");
 			userDAO.saveOrUpdate(user);
-			System.out.println("User Test");
+			System.out.println("User Test");*/
 		}
 }

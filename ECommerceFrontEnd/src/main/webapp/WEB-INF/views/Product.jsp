@@ -15,7 +15,7 @@ $(document).ready(function(){
          { "data": "",
        	"render":function(data,type,row)
        	{
-       	  return "&#8360;."+row.price+"";
+       	  return "&#8360;."+row.product_price+"";
          }  
          
          },
@@ -29,15 +29,15 @@ $(document).ready(function(){
          
          {"data":"product_id",
        	  "render":function(data,type,row){
-       		  return "<a href='http://localhost:8080/ECommerceFrontEnd/"+row.prodid+"/viewDetails' class='btn btn-primary'>View</a>";
+       		  return "<a href='http://localhost:8080/ECommerceFrontEnd/"+row.product_id+"/ViewDetails' class='btn btn-primary'>View</a>";
        	  }
-         },
+         }/* ,
        	
         {"data":"",
        	  "render":function(data,type,row){
-       		  return "<a href='http://localhost:8080/ECommerceFrontEnd/"+row.prodid+"/addcart' class='btn btn-primary'>Add to cart</a>";
+       		  return "<a href='http://localhost:8080/ECommerceFrontEnd/"+row.product_id+"/addcart' class='btn btn-primary'>Add to cart</a>";
        	  }
-         }  
+         }   */
                    
      ]
  });

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class Cart {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartid;
 	private int quantity;
 	private double grandtotal;
@@ -49,10 +49,10 @@ public class Cart {
 	public void setGrandtotal(double grandtotal) {
 		this.grandtotal = grandtotal;
 	}
-	public User getUsers() {
+	public User getUser() {
 		return user;
 	}
-	public void setUsers(User users) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 	public List<CartItem> getCartitems() {
