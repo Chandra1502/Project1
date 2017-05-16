@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TouchM</title>
-<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/ECommerceFrontEnd/resources/css/style.css" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -31,7 +31,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-md-3 col-lg-3">
-				<a href="Home"> <img src="resources/images/TMLogo.jpg"
+				<a href="Home"> <img src="/ECommerceFrontEnd/resources/images/TMLogo.jpg"
 					alt="TouchM" style="float: left; width: 100px; height: 90px;" />
 				</a>
 			</div>
@@ -86,7 +86,7 @@
 					<!-- If user is not Logged in, he has to see this -->
 					<c:choose>
 						<c:when test="${empty LoggedInUser}">
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+							<li><a href="Signup"><span class="glyphicon glyphicon-user"></span>
 									Sign Up</a></li>
 							<li><a href="Login"><span
 									class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -110,10 +110,20 @@
 
 				</ul>
 			</div>
-			<c:choose>
-				<c:when test="${loggedOut==true}">
-					<li class="navrbar-text" style="font: 150%;">${LogOutMessage}</li>
-				</c:when>
-			</c:choose>
+			<ul class="nav navbar-nav navbar-right">
+    <c:choose><c:when test="${not empty LoggedInUser}">
+   
+    <li class="navbar-text" style="font-size:150%;">Welcome ${LoggedInUser}!</li>
+     <div class="media" style="float:left;">
+   <!--  <div class="media-left media-top"> -->
+      <img src="/ECommerceFrontEnd/resources/images/BG.jpg" class="media-object" style="width:80px">
+    <!-- </div> -->
+   </div>
+    </c:when>
+       <c:when test="${loggedOut==true }">
+    <li class="navbar-text" style="font-size=150%;">${LogOutMessage}</li>
+    </c:when>
+    
+    </c:choose></ul>
 		</div>
 	</nav>

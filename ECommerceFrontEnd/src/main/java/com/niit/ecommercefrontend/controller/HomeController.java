@@ -12,7 +12,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,6 +52,13 @@ public class HomeController {
 	public String showLogin()
 	{
 		return "Login";
+	}
+	
+	@RequestMapping("/Signup")
+	public ModelAndView showsignup()
+	{
+		ModelAndView mv= new ModelAndView("Signup");
+		return mv;
 	}
 	
 	@RequestMapping("/Validate")
@@ -95,7 +105,7 @@ public class HomeController {
 		String role = "ROLE_USER";
 		for(GrantedAuthority authority : authorities){
 			if(authority.getAuthority().equals(role)){
-				return "Home"; //It has to be View Products page. Since the page is not created we are redirecting to it home.
+				return "Product"; //It has to be View Products page. Since the page is not created we are redirecting to it home.
 			}
 			else{
 				session.setAttribute("isAdmin", "true");
@@ -114,6 +124,35 @@ public class HomeController {
 		mv.addObject("LogOutMessage","You have Successfully Logged Out.");
 		mv.addObject("loggedOut","true");
 		return mv;
+	}
+	
+	@ModelAttribute
+	public User returnObject()
+	{
+		return new User(); 
+	}
+	 //After clicking submit this page with data is opened and is sent to addus page
+	@RequestMapping(value = "/addus", method = RequestMethod.POST)
+	public String addUser(@ModelAttribute("user") User user, BindingResult result, HttpServletRequest request)
+
+	{
+
+		System.out.print(user.getConfirmpassword());
+		System.out.println(user.getPassword());
+
+		user.setEnabled("true");
+		user.setRole("ROLE_USER");
+
+		if (user.getConfirmpassword().equals(user.getPassword()));
+
+		{
+
+			userDAO.saveOrUpdate(user);
+
+		}
+
+		return "Login";
+
 	}
 }
 

@@ -1,13 +1,16 @@
 package com.niit.ecommercebackend.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
@@ -32,10 +35,19 @@ public class User {
 	@NotNull(message = "role cannot be blank")
 	private String role;
 	private String enabled;
+	@Transient 
+	@NotNull(message = "confirm password cannot be blank")
+	private String confirmpassword;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
 	private Cart cart;
 	
+	public String getConfirmpassword() {
+		return confirmpassword;
+	}
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
 	public Cart getCart() {
 		return cart;
 	}
