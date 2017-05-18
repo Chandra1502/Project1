@@ -168,26 +168,30 @@ public class ProductController {
 
 	@RequestMapping("/{id}/addcart")
 	public String addCart(@PathVariable Integer id, Principal principal) {
-		Integer category_id = 0;
+		
+		Product product = productDAO.get(id);
+		
 		if (principal != null) {
 			User user = userDAO.get(principal.getName());
 			System.out.println(principal.getName());
+			System.out.println(user);
+			System.out.println(product.getProduct_id());
 			Cart cart = user.getCart();
-			System.out.println(cart.getCartid());
-			CartItem cartItem = cartItemDAO.getExistingCartItemCount(id, cart.getCartid());
-			System.out.println("cartItem item" + cartItem);
-			Product product = productDAO.get(id);
-			if (cartItem == null) {
-				cartItem = new CartItem();
+			if (cart == null) {
+				System.out.println("inside if");
+				cart = new Cart();
+				cart.setQuantity(1);
+				cart.setGrandtotal(product.getProduct_price());
+				cart.setUser(user);
+				CartItem cartItem = new CartItem();
 				cartItem.setQuantity(1);
 				cartItem.setProduct(product);
 				cartItem.setGrandtotal(product.getProduct_price());
 				cartItem.setCart(cart);
 				cartItemDAO.addCartItem(cartItem);
-				cart.setGrandtotal(cart.getGrandtotal() + product.getProduct_price());
-				cart.setQuantity(cart.getQuantity() + 1);
-				cartDAO.updateCart(cart);
+				cartDAO.addCart(cart);
 			} else {
+				CartItem cartItem = cartItemDAO.getExistingCartItemCount(id, cart.getCartid());
 				cartItem.setQuantity(cartItem.getQuantity() + 1);
 				cartItem.setGrandtotal(cartItem.getGrandtotal() + product.getProduct_price());
 				cart.setGrandtotal(cart.getGrandtotal() + product.getProduct_price());
@@ -201,7 +205,7 @@ public class ProductController {
 		}
 		
 
-		return "redirect:/Product";
+		return "Product";
 	}
 
 }
