@@ -17,10 +17,10 @@ import org.springframework.stereotype.Component;
 public class CartItem implements java.io.Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartitemid;
 	
-	@ManyToOne(cascade=CascadeType.REFRESH)
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Cart cart;
 	
 	@OneToOne

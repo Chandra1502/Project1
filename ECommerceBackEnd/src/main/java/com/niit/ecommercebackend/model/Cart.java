@@ -25,10 +25,10 @@ public class Cart {
 	private int quantity;
 	private double grandtotal;
 	
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade=CascadeType.ALL)
 	private User user;
 	
-	@OneToMany(cascade=CascadeType.PERSIST)
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<CartItem> cartitems = new ArrayList<CartItem>();
 	
 	public int getCartid() {
