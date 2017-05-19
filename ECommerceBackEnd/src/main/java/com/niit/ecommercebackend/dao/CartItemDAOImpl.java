@@ -2,8 +2,6 @@ package com.niit.ecommercebackend.dao;
 
 import java.util.List;
 
-import javax.persistence.NoResultException;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -113,7 +111,7 @@ public class CartItemDAOImpl implements CartItemDAO {
 	public boolean updateCartItem(CartItem cartItem) {
 		try
 		{
-			Session s = sessionFactory.getCurrentSession();
+			Session s = sessionFactory.openSession();
 			Transaction t = s.beginTransaction();
 			s.update(cartItem);
 			t.commit();

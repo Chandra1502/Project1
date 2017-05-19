@@ -29,11 +29,16 @@ public class CartDAOImpl implements CartDAO {
 
 	@Override
 	public boolean addCart(Cart cart) {
-		Session s = sessionFactory.getCurrentSession();
+		try{
+		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(cart);
 		tx.commit();
 		return true;
+		}
+		catch(Exception e){
+			return false;
+		}
 	}
 
 	@Override

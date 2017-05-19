@@ -188,8 +188,9 @@ public class ProductController {
 				cartItem.setProduct(product);
 				cartItem.setGrandtotal(product.getProduct_price());
 				cartItem.setCart(cart);
-				cartItemDAO.addCartItem(cartItem);
+				System.out.println("above the Add cart methods");
 				cartDAO.addCart(cart);
+				cartItemDAO.addCartItem(cartItem);
 			} else {
 				CartItem cartItem = cartItemDAO.getExistingCartItemCount(id, cart.getCartid());
 				cartItem.setQuantity(cartItem.getQuantity() + 1);
@@ -202,6 +203,10 @@ public class ProductController {
 			}
 
 			session.setAttribute("cartcount", cart.getQuantity());
+		}
+		else
+		{
+			System.out.println("in outer else");
 		}
 		
 
