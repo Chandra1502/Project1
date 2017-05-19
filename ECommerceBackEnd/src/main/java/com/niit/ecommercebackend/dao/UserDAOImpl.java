@@ -57,7 +57,6 @@ public class UserDAOImpl implements UserDAO {
 	public User get(String email) {
 		Session s = sessionFactory.getCurrentSession();
 		Transaction tx = s.beginTransaction();
-		
 		String str = "from User where emailid = '"+email+"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(str);
 		List<User> list = query.list();

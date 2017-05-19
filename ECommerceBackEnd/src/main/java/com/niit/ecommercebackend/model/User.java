@@ -35,6 +35,7 @@ public class User {
 	@NotNull(message = "role cannot be blank")
 	private String role;
 	private String enabled;
+	
 	@Transient 
 	@NotNull(message = "confirm password cannot be blank")
 	private String confirmpassword;
