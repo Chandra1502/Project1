@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecommercebackend.model.User;
 
@@ -30,41 +31,42 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public boolean saveOrUpdate(User user) {
-		Session s = sessionFactory.openSession();
-		Transaction tx = s.beginTransaction();
-		s.saveOrUpdate(user);
-		tx.commit();
-		return true;
-	}
-
-	
-	public boolean delete(User user) {
 		try{
-			Session s = sessionFactory.openSession();
-			Transaction tx = s.beginTransaction();
-			s.delete(user);
-			tx.commit();
-			return true;
+			sessionFactory.getCurrentSession().saveOrUpdate(user);
+			return  true;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 			return false;
+		}	
+	}
+	
+
+	
+	public boolean delete(User user) {
+		try{
+			sessionFactory.getCurrentSession().delete(user);
+			return  true;
 		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}	
 	}
 
 	@Override
+	@Transactional
 	public User get(String email) {
-		Session s = sessionFactory.getCurrentSession();
-		Transaction tx = s.beginTransaction();
-		String str = "from User where emailid = '"+email+"'";
-		Query query = sessionFactory.getCurrentSession().createQuery(str);
-		List<User> list = query.list();
-		
-		if(list != null && list.isEmpty()){
-			tx.commit();
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from User where emailid=:email", User.class).setParameter("email", email).getSingleResult();
 		}
-		return list.get(0);
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override

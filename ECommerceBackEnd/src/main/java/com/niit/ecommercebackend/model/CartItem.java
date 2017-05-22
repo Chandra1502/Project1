@@ -1,10 +1,12 @@
 package com.niit.ecommercebackend.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -20,7 +22,7 @@ public class CartItem implements java.io.Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartitemid;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Cart cart;
 	
 	@OneToOne
@@ -28,6 +30,7 @@ public class CartItem implements java.io.Serializable {
 	
 	private int quantity;
 	private double grandtotal;
+	
 	public int getCartitemid() {
 		return cartitemid;
 	}

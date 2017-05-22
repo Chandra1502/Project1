@@ -18,10 +18,8 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int category_id;
-	@NotNull(message = "category name cannot be blank")
 	@Column(nullable = false)
 	private String category_name;
-	@NotNull(message = "description cannot be blank")
 	@Column(nullable = false)
 	private String category_description;
 	public int getCategory_id() {

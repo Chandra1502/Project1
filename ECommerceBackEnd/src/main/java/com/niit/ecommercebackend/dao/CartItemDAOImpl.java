@@ -8,12 +8,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecommercebackend.model.CartItem;
 
 @Repository("cartItemDAO")
-@Transactional
+@EnableTransactionManagement
 public class CartItemDAOImpl implements CartItemDAO {
 	
 	@Autowired
@@ -30,13 +31,17 @@ public class CartItemDAOImpl implements CartItemDAO {
 	}
 
 	@Override
+	@Transactional
 	public boolean addCartItem(CartItem cartItem) {
 		try
 		{
-			Session s = sessionFactory.getCurrentSession();
+			/*System.out.println("in the addcartitem");
+			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
 			s.save(cartItem);
-			tx.commit();
+			tx.commit();*/
+			
+			sessionFactory.getCurrentSession().saveOrUpdate(cartItem);
 			return true;
 		}
 		catch(Exception e)
@@ -48,12 +53,21 @@ public class CartItemDAOImpl implements CartItemDAO {
 
 	@Override
 	public List<CartItem> getAll(int id) {
-		Session s = sessionFactory.openSession();
+		/*Session s = sessionFactory.openSession();
 		Transaction t = s.beginTransaction();
 		Query query=s.createQuery("FROM CartItem where cart_cartid=:id");
 		query.setParameter("id",id);
 		t.commit();
-		return query.list();
+		return query.list();*/
+		
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from CartItem", CartItem.class).getResultList();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
 	}
 
 	@Override
@@ -71,16 +85,23 @@ public class CartItemDAOImpl implements CartItemDAO {
 
 	@Override
 	public CartItem getCartItem(int id) {
-		return (CartItem) sessionFactory.openSession().get(CartItem.class, id);
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from CartItem where cartitemid=:id", CartItem.class).setParameter("id", id).getSingleResult();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
 	}
 
 	@Override
 	public boolean deleteAll(int cart_id) {
 		try
 		{
-		Query q=sessionFactory.getCurrentSession().createQuery("delete from CartItem where cart_cartid=:id");
+		/*Query q=sessionFactory.getCurrentSession().createQuery("delete from CartItem where cart_cartid=:id");
 		q.setParameter("id", cart_id);
-		q.executeUpdate();
+		q.executeUpdate();*/
 		return true;
 		}
 		catch(Exception e){
@@ -92,14 +113,9 @@ public class CartItemDAOImpl implements CartItemDAO {
 
 	@Override
 	public CartItem getExistingCartItemCount(int product_id, int cart_id) {
-		Query q=sessionFactory.openSession().createQuery("from CartItem where cart_cartid=:cartid and product_product_id=:productid");
-		q.setParameter("cartid", cart_id);
-		q.setParameter("productid", product_id);
-		
 		try{
-		
-		return (CartItem)q.uniqueResult();
-			
+		return sessionFactory.getCurrentSession().createQuery("from CartItem where cart_cartid=:cartid and product_product_id=:productid",CartItem.class)
+				.setParameter("cartid", cart_id).setParameter("productid", product_id).getSingleResult();
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -111,10 +127,11 @@ public class CartItemDAOImpl implements CartItemDAO {
 	public boolean updateCartItem(CartItem cartItem) {
 		try
 		{
-			Session s = sessionFactory.openSession();
+			/*Session s = sessionFactory.openSession();
 			Transaction t = s.beginTransaction();
 			s.update(cartItem);
-			t.commit();
+			t.commit();*/
+			sessionFactory.getCurrentSession().update(cartItem);
 			return true;
 		}
 		catch(Exception e)

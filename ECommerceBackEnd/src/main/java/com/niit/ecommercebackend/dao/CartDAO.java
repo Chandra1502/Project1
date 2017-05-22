@@ -8,5 +8,6 @@ public interface CartDAO {
 	public boolean updateCart(Cart cart);
 	public boolean resetCart(int id);
 	Cart getCart(int id);
+	Cart getCartWithUserId(Integer id);
 	
 }

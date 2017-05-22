@@ -43,8 +43,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 		try{
 			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
-			//Category c = (Category)s.get(Category.class, new Integer(8));
-			//s.delete(c);
 			s.delete(category);
 			tx.commit();
 			return true;
