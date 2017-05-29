@@ -10,7 +10,7 @@
 .tg {
 	border-collapse: collapse;
 	border-spacing: 0;
-	border-color: #ccc;
+	border-color: #D3D3D3;
 }
 
 .tg td {
