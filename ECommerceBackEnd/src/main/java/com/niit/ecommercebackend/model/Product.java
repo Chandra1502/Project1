@@ -40,6 +40,12 @@ public class Product {
 	@Column(name="supplier_id")
 	private int supplier_id;
 	
+	/*@Column(name="category_name")
+	private int category_name;
+	
+	@Column(name="supplier_name")
+	private int supplier_name;*/
+	
 	@ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
 	@JoinColumn(name="category_id",insertable=false,updatable=false)
 	private Category category;
@@ -109,6 +115,18 @@ public class Product {
 	public void setProduct_price(int product_price) {
 		this.product_price = product_price;
 	}
+	/*public int getCategory_name() {
+		return category_name;
+	}
+	public void setCategory_name(int category_name) {
+		this.category_name = category_name;
+	}
+	public int getSupplier_name() {
+		return supplier_name;
+	}
+	public void setSupplier_name(int supplier_name) {
+		this.supplier_name = supplier_name;
+	}*/
 	
 	
 }

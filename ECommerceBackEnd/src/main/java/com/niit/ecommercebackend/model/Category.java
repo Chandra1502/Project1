@@ -18,6 +18,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int category_id;
+	//@Id
 	@Column(nullable = false)
 	private String category_name;
 	@Column(nullable = false)

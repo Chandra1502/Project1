@@ -19,13 +19,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommercebackend.dao.CartDAO;
 import com.niit.ecommercebackend.dao.UserDAO;
+import com.niit.ecommercebackend.model.Supplier;
 import com.niit.ecommercebackend.model.User;
 
 
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	CartDAO cartDAO;
 	
 	@Autowired
 	UserDAO userDAO;
@@ -52,6 +57,12 @@ public class HomeController {
 	public String showLogin()
 	{
 		return "Login";
+	}
+	
+	@RequestMapping("/AdminHome")
+	public String showAdminHome()
+	{
+		return "AdminHome";
 	}
 	
 	@RequestMapping("/Signup")
@@ -98,6 +109,7 @@ public class HomeController {
 		session.setAttribute("LoggedInUser", user.getUsername());
 		session.setAttribute("LoggedInUserID", x);
 		session.setAttribute("LoggedIn", "true");
+		model.addAttribute("mycartList", cartDAO.getCartWithUserId(x));
 		
 		@SuppressWarnings("unchecked")
 		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();

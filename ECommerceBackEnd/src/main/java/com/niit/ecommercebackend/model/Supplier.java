@@ -16,6 +16,7 @@ public class Supplier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int supplier_id;
+	//@Id
 	@NotNull(message = "supplier name cannot be blank")
 	private String supplier_name;
 	@NotNull(message = "supplier location cannot be blank")

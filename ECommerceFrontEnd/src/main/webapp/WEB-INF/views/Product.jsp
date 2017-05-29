@@ -2,12 +2,12 @@
 
 <script>
 $(document).ready(function(){
-	 var path="http://localhost:8080/ECommerceFrontEnd/resources/images/";
+	 var path="http://localhost:8083/ECommerceFrontEnd/resources/images/";
 	 
  $("#producttable").DataTable({
 	
 	  "ajax": {
-		    "url": "http://localhost:8080/ECommerceFrontEnd/allproducts",
+		    "url": "http://localhost:8083/ECommerceFrontEnd/allproducts",
 		    "dataSrc": ""
 		  },
 	  "columns": [
@@ -29,7 +29,7 @@ $(document).ready(function(){
          
          {"data":"product_id",
        	  "render":function(data,type,row){
-       		  return "<a href='http://localhost:8080/ECommerceFrontEnd/"+row.product_id+"/ViewDetails' class='btn btn-primary'>View</a>";
+       		  return "<a href='http://localhost:8083/ECommerceFrontEnd/"+row.product_id+"/ViewDetails' class='btn btn-primary'>View</a>";
        	  }
          }/* ,
        	
