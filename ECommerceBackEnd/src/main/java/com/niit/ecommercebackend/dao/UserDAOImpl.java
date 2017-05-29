@@ -2,7 +2,7 @@ package com.niit.ecommercebackend.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.ecommercebackend.model.Category;
 import com.niit.ecommercebackend.model.User;
 
+@SuppressWarnings("deprecation")
 @Repository(value="userDAO")
 @EnableTransactionManagement
 public class UserDAOImpl implements UserDAO {
@@ -29,7 +31,8 @@ public class UserDAOImpl implements UserDAO {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-
+	
+	@Transactional
 	public boolean saveOrUpdate(User user) {
 		try{
 			sessionFactory.getCurrentSession().saveOrUpdate(user);
@@ -43,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 
-	
+	@Transactional
 	public boolean delete(User user) {
 		try{
 			sessionFactory.getCurrentSession().delete(user);
@@ -60,27 +63,33 @@ public class UserDAOImpl implements UserDAO {
 	@Transactional
 	public User get(String email) {
 		try{
+			
 			return sessionFactory.getCurrentSession().createQuery("from User where emailid=:email", User.class).setParameter("email", email).getSingleResult();
+			
 		}
 		catch(Exception e)
 		{
+			System.out.println("Exception in get method of userDAO");
 			e.printStackTrace();
 			return null;
 		}
 	}
 
 	@Override
+	@Transactional
 	public List<User> list() {
-		String hql = "from User";
-		Session s = sessionFactory.openSession();
-		Transaction tx = s.beginTransaction();
-		Query query = s.createQuery(hql);
-		List<User> list = query.list();
-		tx.commit();
-		return list;
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from User", User.class).getResultList();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
 	}
 
-	@Override
+	/*@Override
+	@Transactional
 	public User getById(int id) {
 		try{
 			String hql = "from User where userid=" + id;
@@ -98,7 +107,7 @@ public class UserDAOImpl implements UserDAO {
 			e.printStackTrace();
 			return null;
 		}
-	}
+	}*/
 	
 	
 

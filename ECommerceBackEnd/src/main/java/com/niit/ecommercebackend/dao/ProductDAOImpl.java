@@ -2,8 +2,10 @@ package com.niit.ecommercebackend.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,57 +33,58 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
+	@Transactional
 	public boolean saveOrUpdate(Product product) {
-		Session s = sessionFactory.openSession();
-		Transaction tx = s.beginTransaction();
-		s.saveOrUpdate(product);
-		tx.commit();
-		return true;
-	}
-
-	@Override
-	public boolean delete(Product product) {
-		Session s = sessionFactory.openSession();
-		Transaction tx = s.beginTransaction();
-		s.delete(product);
-		tx.commit();
-		return true;
-	}
-
-	@Override
-	public Product get(int id) {
-		String hql = "from Product where product_id= " + id;
-		Session s = sessionFactory.openSession();
-		Transaction t = s.beginTransaction();
-		Query query = s.createQuery(hql);
-		List<Product> list = query.list();
-		t.commit();
-		if(list == null || list.isEmpty())
+		try{
+			sessionFactory.getCurrentSession().saveOrUpdate(product);
+			return true;
+		}
+		catch(Exception e)
 		{
-			System.out.println("No products are available with this id: "+id);
+			System.out.println(e);
+			return false;
+		}
+		
+	}
+
+	@Override
+	@Transactional
+	public boolean delete(Product product) {
+		try{
+			sessionFactory.openSession().delete(product);
+			return true;
+			
+		}catch(Exception e)
+		{
+			System.out.println(e);
+			return false;
+		}
+	}
+
+	@Override
+	@Transactional
+	public Product get(int id) {
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from Product where product_id=:id", Product.class).setParameter("id", id).getSingleResult();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
 			return null;
 		}
-		else
-			return list.get(0);
 	}
 
 	@Override
 	@Transactional
 	public List<Product> list() {
-		Session s = sessionFactory.openSession();
-		Transaction t = s.beginTransaction();
-		String hql = "from Product";
-		Query query = s.createQuery(hql);
-		
-		System.out.println("Starting of the method List");
-		List<Product> list = query.list();
-		
-		if(list==null||list.isEmpty())
-		{
-			System.out.println("No products are available");
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from Product", Product.class).getResultList();
 		}
-		t.commit();
-		return query.list();
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
 	}
 
 }

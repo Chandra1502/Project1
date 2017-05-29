@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.ecommercebackend.model.Category;
 import com.niit.ecommercebackend.model.Supplier;
 
 @Repository(value="supplierDAO")
@@ -29,13 +30,18 @@ public class SupplierDAOImpl implements SupplierDAO {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-
+	
+	@Transactional
 	public boolean saveOrUpdate(Supplier supplier) {
-		Session s = sessionFactory.openSession();
-		Transaction tx = s.beginTransaction();
-		s.saveOrUpdate(supplier);
-		tx.commit();
-		return true;
+		try{
+			sessionFactory.getCurrentSession().saveOrUpdate(supplier);
+			return true;
+			
+		}catch(Exception e)
+		{
+			System.out.println(e);
+			return false;
+		}
 	}
 	
 	@Override
@@ -43,51 +49,40 @@ public class SupplierDAOImpl implements SupplierDAO {
 	public boolean delete(Supplier supplier) {
 		
 		try{
-			Session s = sessionFactory.openSession();
-			Transaction tx = s.beginTransaction();
-			s.delete(supplier);
-			tx.commit();
+			sessionFactory.getCurrentSession().delete(supplier);
 			return true;
-		}
-		catch(Exception e){
-			e.printStackTrace();
+			
+		}catch(Exception e)
+		{
+			System.out.println(e);
 			return false;
 		}
 	}
 
 	@Override
+	@Transactional
 	public Supplier get(int id) {
-		String hql = "from Supplier where supplier_id= " + id;
-		Session s = sessionFactory.openSession();
-		Transaction t = s.beginTransaction();
-		Query query = s.createQuery(hql);
-		List<Supplier> list = query.list();
-		if(list == null || list.isEmpty())
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from Supplier where supplier_id=:id", Supplier.class).setParameter("id", id).getSingleResult();
+		}
+		catch(Exception e)
 		{
-			System.out.println("No products are available with this id: "+id);
+			System.out.println(e);
 			return null;
 		}
-		else
-			return list.get(0);
 	}
 
 	@Override
 	@Transactional
 	public List<Supplier> list() {
-		Session s = sessionFactory.openSession();
-		Transaction t = s.beginTransaction();
-		String hql = "from Supplier";
-		Query query = s.createQuery(hql);
-		
-		System.out.println("Starting of the method List");
-		List<Supplier> list = query.list();
-		
-		if(list==null||list.isEmpty())
-		{
-			System.out.println("No suppliers are available");
+		try{
+			return sessionFactory.getCurrentSession().createQuery("from Supplier", Supplier.class).getResultList();
 		}
-		t.commit();
-		return query.list();
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return null;
+		}
 	}
 	
 	
