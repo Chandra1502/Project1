@@ -121,7 +121,6 @@ public class ProductController {
 		} else {
 			productDAO.saveOrUpdate(product);
 			System.out.println("product updated");
-			return "AddProduct";
 		}
 
 		HttpSession session = request.getSession(false);
@@ -131,7 +130,7 @@ public class ProductController {
 		model.addAttribute("categoryList", categoryDAO.list());
 		model.addAttribute("supplierList", supplierDAO.list());
 
-		return "redirect:/AddProduct";
+		return "AddProduct";
 	}
 
 	@RequestMapping(value = "/editproducts{id}")
@@ -139,6 +138,8 @@ public class ProductController {
 		int i = Integer.parseInt(id);
 		model.addAttribute("product", productDAO.get(i));
 		model.addAttribute("productList", productDAO.list());
+		model.addAttribute("categoryList", categoryDAO.list());
+		model.addAttribute("supplierList", supplierDAO.list());
 		ModelAndView mv = new ModelAndView("AddProduct");
 		return mv;
 	}
@@ -171,10 +172,12 @@ public class ProductController {
 		User user = userDAO.get(principal.getName());
 		user.setConfirmpassword(user.getPassword());
 		Product product = productDAO.get(id);
+		System.out.println(product);
 		Cart cart = cartDAO.getCartWithUserId(user.getUserid());
 		
 		if(cart!=null)
 	     {
+			System.out.println("Cart is not null and can be updated");
 	    	 cart.setUser(user);
 	    		
 	    	CartItem cartItem=cartItemDAO.getExistingCartItemCount(id, cart.getCartid());
@@ -200,8 +203,10 @@ public class ProductController {
 	    	cart.setCartitems(cartItems);
 	    	cartDAO.updateCart(cart);
 	    	
-	     }else
+	     }
+		else
 	     {
+	    	 System.out.println("Cart is null and is ready to be created");
 	    	 cart=new Cart();
 	    	 cart.setGrandtotal(product.getProduct_price());
 	    	 cart.setQuantity(1);
@@ -213,11 +218,13 @@ public class ProductController {
 	    	 cartItem.setQuantity(1);
 	    	 
 	    	 cartDAO.addCart(cart);
+	    	 System.out.println("addCart completed in product Controller");
 	    	 cartItemDAO.addCartItem(cartItem);
+	    	 System.out.println("addCartItem completed in product Controller");
 	     }
 	     
 	     //model.addAttribute("mycartList", cartItemDAO.getAll(id));
-	return "Products";
+	return "MyCart";
 }
 
 }
