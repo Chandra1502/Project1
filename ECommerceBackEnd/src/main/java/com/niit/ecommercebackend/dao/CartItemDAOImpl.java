@@ -22,7 +22,6 @@ public class CartItemDAOImpl implements CartItemDAO {
 
 	public CartItemDAOImpl() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public CartItemDAOImpl(SessionFactory sessionFactory) {

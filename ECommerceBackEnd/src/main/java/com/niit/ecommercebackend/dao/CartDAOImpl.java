@@ -18,7 +18,6 @@ public class CartDAOImpl implements CartDAO {
 	
 	public CartDAOImpl() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public CartDAOImpl(SessionFactory sessionFactory) {
