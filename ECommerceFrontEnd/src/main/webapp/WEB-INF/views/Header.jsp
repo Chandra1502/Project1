@@ -31,12 +31,12 @@
 <body class="body">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 col-md-3 col-lg-3">
+			<div class="col-xs-4 col-md-3 col-lg-3">
 				<a href="Home"> <img src="/ECommerceFrontEnd/resources/images/TMLogo.jpg"
 					alt="TouchM" style="float: left; width: 100px; height: 90px;" />
 				</a>
 			</div>
-			<div class="col-xs-12 col-md-6 col-lg-6">
+			<div class="col-xs-4 col-md-6 col-lg-6">
 				<div class="middle">
 					<h1 class="name">
 						<b style="color: #034f84">TouchM</b>
@@ -44,7 +44,7 @@
 					<p>The One stop site for Smart Phones.
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-3 col-lg-3">
+			<div class="col-xs-4 col-md-3 col-lg-3">
 				<div class="myDetails">
 					<p>Contact Us:</p>
 					<p>
@@ -74,12 +74,12 @@
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">OS<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Android</a></li>
-							<li><a href="#">IOS</a></li>
-							<li><a href="#">Windows</a></li>
-							<li><a href="#">BlackBerry</a></li>
+							<li><a href="Android">Android</a></li>
+							<li><a href="IOS">IOS</a></li>
+							<li><a href="Windows">Windows</a></li>
+							<li><a href="BlackBerry">BlackBerry</a></li>
 						</ul></li>
-					<li><a href="#">About Us</a></li>
+					<li><a href="AboutUs">About Us</a></li>
 					<li><a href="Product">Phones</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -104,7 +104,7 @@
 									<li><a href="#">Settings</a></li>
 									<li><a href="perform_logout">Sign out</a></li>
 								</ul></li>
-							<li><a href="#"><span
+							<li><a href="cart"><span
 									class="glyphicon glyphicon-shopping-cart"></span></a></li>
 						</c:when>
 					</c:choose>
@@ -128,3 +128,6 @@
     </c:choose></ul>
 		</div>
 	</nav>
+	</body>
+	</html>
+	

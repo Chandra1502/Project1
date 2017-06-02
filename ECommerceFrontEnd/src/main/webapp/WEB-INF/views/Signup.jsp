@@ -48,7 +48,7 @@
 							</div>
  --%>							<center><input type="submit" name="_eventId_submit"
 								class="btn btn-primary" value="SUBMIT">&nbsp;&nbsp;<input
-								type="submit" name="_eventId_cancel" value="CANCEL"
+								type="reset" name="_eventId_cancel" value="CANCEL"
 								class="btn btn-danger" /></center>
 
 
