@@ -2,12 +2,7 @@ package com.niit.ecommercebackend.dao;
 
 import java.util.List;
 
-import javax.persistence.TypedQuery;
-
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -31,7 +26,8 @@ public class ProductDAOImpl implements ProductDAO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	// Method to save or update the product object in the Database
 	@Override
 	@Transactional
 	public boolean saveOrUpdate(Product product) {
@@ -46,7 +42,8 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		
 	}
-
+	
+	// Method to delete the user object from the Database
 	@Override
 	@Transactional
 	public boolean delete(Product product) {
@@ -60,7 +57,8 @@ public class ProductDAOImpl implements ProductDAO {
 			return false;
 		}
 	}
-
+	
+	// Method to retrieve the product object from the Database using the product id
 	@Override
 	@Transactional
 	public Product get(int id) {
@@ -73,7 +71,8 @@ public class ProductDAOImpl implements ProductDAO {
 			return null;
 		}
 	}
-
+	
+	// Method to retrieve all the product objects from the Database
 	@Override
 	@Transactional
 	public List<Product> list() {

@@ -2,16 +2,12 @@ package com.niit.ecommercebackend.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.ecommercebackend.model.Category;
 import com.niit.ecommercebackend.model.Supplier;
 
 @Repository(value="supplierDAO")
@@ -31,6 +27,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	// Method to save or update the supplier object in the Database
 	@Transactional
 	public boolean saveOrUpdate(Supplier supplier) {
 		try{
@@ -44,6 +41,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		}
 	}
 	
+	// Method to delete the supplier object from the Database
 	@Override
 	@Transactional
 	public boolean delete(Supplier supplier) {
@@ -58,7 +56,8 @@ public class SupplierDAOImpl implements SupplierDAO {
 			return false;
 		}
 	}
-
+	
+	// Method to retrieve the supplier object from the Database using the supplier id
 	@Override
 	@Transactional
 	public Supplier get(int id) {
@@ -71,7 +70,8 @@ public class SupplierDAOImpl implements SupplierDAO {
 			return null;
 		}
 	}
-
+	
+	// Method to retrieve all the supplier objects from the Database
 	@Override
 	@Transactional
 	public List<Supplier> list() {

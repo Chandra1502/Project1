@@ -24,7 +24,8 @@ public class CartDAOImpl implements CartDAO {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-
+	
+	// Method to add a cart object in the Database
 	@Override
 	@Transactional
 	public boolean addCart(Cart cart) {
@@ -39,7 +40,8 @@ public class CartDAOImpl implements CartDAO {
 			return false;
 		}
 	}
-
+	
+	// Method to update the cart object in the Database
 	@Override
 	@Transactional
 	public boolean updateCart(Cart cart) {
@@ -53,7 +55,8 @@ public class CartDAOImpl implements CartDAO {
 			return false;
 		}
 	}
-
+	
+	// Method to reset the cart object in the Database
 	@Override
 	@Transactional
 	public boolean resetCart(int id) {
@@ -70,12 +73,13 @@ public class CartDAOImpl implements CartDAO {
 			return false;
 		}
 	}
-
+	
+	// Method to retrieve a cart object from the Database by using the cart id
 	@Override
 	@Transactional
 	public Cart getCart(int id) {
 		try{
-			return sessionFactory.getCurrentSession().createQuery("from Cart where catid=:id", Cart.class).setParameter("id", id).getSingleResult();
+			return sessionFactory.getCurrentSession().createQuery("from Cart where cartid=:id", Cart.class).setParameter("id", id).getSingleResult();
 		}
 		catch(Exception e)
 		{
@@ -83,7 +87,8 @@ public class CartDAOImpl implements CartDAO {
 			return null;
 		}
 	}
-
+	
+	// Method to retrieve a cart object from the Database by using the user id
 	@Override
 	@Transactional
 	public Cart getCartWithUserId(Integer id) {

@@ -88,20 +88,6 @@ public class CartItemDAOImpl implements CartItemDAO {
 
 	@Override
 	@Transactional
-	public boolean deleteAll(int cart_id) {
-		try
-		{
-		return true;
-		}
-		catch(Exception e){
-			System.out.println(e);
-		return false;
-		}
-
-	}
-
-	@Override
-	@Transactional
 	public CartItem getExistingCartItemCount(int product_id, int cart_id) {
 		try{
 		return sessionFactory.getCurrentSession().createQuery("from CartItem where cart_cartid=:cartid and product_product_id=:productid",CartItem.class)

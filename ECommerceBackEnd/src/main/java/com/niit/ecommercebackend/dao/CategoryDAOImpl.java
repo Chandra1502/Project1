@@ -2,9 +2,7 @@ package com.niit.ecommercebackend.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -28,7 +26,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-
+	
+	// Method to save or update the category object in the Database
 	@Transactional
 	public boolean saveOrUpdate(Category category) {
 		try{
@@ -42,6 +41,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 	
+	// Method to delete the category object from the Database
 	@Transactional
 	public boolean delete(Category category) {
 		
@@ -55,7 +55,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 			return false;
 		}
 	}
-
+	
+	// Method to retrieve the category object from the Database using the category id
 	@Override
 	@Transactional
 	public Category get(int id) {
@@ -68,7 +69,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 			return null;
 		}
 	}
-
+	
+	// Method to retrieve all the category objects from the Database
 	@Override
 	@Transactional
 	public List<Category> list() {

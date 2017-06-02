@@ -2,19 +2,14 @@ package com.niit.ecommercebackend.dao;
 
 import java.util.List;
 
-import org.hibernate.query.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.ecommercebackend.model.Category;
 import com.niit.ecommercebackend.model.User;
 
-@SuppressWarnings("deprecation")
 @Repository(value="userDAO")
 @EnableTransactionManagement
 public class UserDAOImpl implements UserDAO {
@@ -32,6 +27,7 @@ public class UserDAOImpl implements UserDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	// Method to save or update the user object in the Database
 	@Transactional
 	public boolean saveOrUpdate(User user) {
 		try{
@@ -45,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 		}	
 	}
 	
-
+	// Method to delete the user object from the Database
 	@Transactional
 	public boolean delete(User user) {
 		try{
@@ -58,7 +54,8 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}	
 	}
-
+	
+	// Method to retrieve a specific user object from the Database using the email id
 	@Override
 	@Transactional
 	public User get(String email) {
@@ -74,7 +71,8 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 	}
-
+	
+	// Method to retrieve all the user objects from the Database
 	@Override
 	@Transactional
 	public List<User> list() {
