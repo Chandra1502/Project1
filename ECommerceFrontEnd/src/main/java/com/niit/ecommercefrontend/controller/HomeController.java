@@ -41,10 +41,46 @@ public class HomeController {
 	@Autowired
 	SessionFactory sessionFactory;
 	
+	// OS Mappings
+	
+	@RequestMapping("/Android")
+	public String showAndroid()
+	{
+		return "Android";
+	}
+	
+	@RequestMapping("/IOS")
+	public String showIOS()
+	{
+		return "IOS";
+	}
+	
+	@RequestMapping("/Windows")
+	public String showWindows()
+	{
+		return "Windows";
+	}
+	
+	@RequestMapping("/BlackBerry")
+	public String showBlackBerry()
+	{
+		return "BlackBerry";
+	}
+	// OS Mapping Completed
+	
+	
+	
+	// Home Page Mappings
 	@RequestMapping("/")
 	public String showHome()
 	{
 		return "Home";
+	}
+	
+	@RequestMapping("/AboutUs")
+	public String showAboutUs()
+	{
+		return "AboutUs";
 	}
 	
 	@RequestMapping("/Home")
@@ -70,30 +106,10 @@ public class HomeController {
 	{
 		ModelAndView mv= new ModelAndView("Signup");
 		return mv;
-	}
-	
-	@RequestMapping("/Validate")
-	public ModelAndView showMessage(@RequestParam("username") String uname,@RequestParam("password")String pass)
-	{
-		ModelAndView mv;
-		if(uname.equals("NIIT")&&pass.equals("NIIT"))
-		{
-			mv=new ModelAndView("Home");
-			mv.addObject("LoggedInUser", "User");
-			return mv;
-		}
-		else if(pass.equals("admin")) {
-			mv = new ModelAndView("AdminHome");
-			mv.addObject("LoggedInUser", "Admin");
-			return mv;
-		}
-		else
-		{
-			mv=new ModelAndView("Login");
-			return mv;
-		}
 	}	
+	// Home page Mappings Completed
 	
+	// Login Mapping
 	@RequestMapping(value = "/login_session_attributes")
 	public String login_session_attributes(HttpSession session, Model model, @RequestParam(value="username") String id){
 		
@@ -117,7 +133,7 @@ public class HomeController {
 		String role = "ROLE_USER";
 		for(GrantedAuthority authority : authorities){
 			if(authority.getAuthority().equals(role)){
-				return "Product"; //It has to be View Products page. Since the page is not created we are redirecting to it home.
+				return "Product"; 
 			}
 			else{
 				session.setAttribute("isAdmin", "true");
@@ -126,6 +142,7 @@ public class HomeController {
 		return "AdminHome";
 	}
 	
+	// Logout Mapping
 	@RequestMapping("/perform_logout")
 	public ModelAndView showLogout(HttpServletRequest request, HttpSession session){
 		System.out.println("logout");

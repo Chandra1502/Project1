@@ -145,13 +145,14 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/deleteproduct{id}")
-	public ModelAndView deleteProduct(@PathVariable("id") String id, Model model) {
+	public ModelAndView deleteProduct(@PathVariable("id") String id, Model model) 
+	{
 		int i = Integer.parseInt(id);
 		product = productDAO.get(i);
 		productDAO.delete(product);
 		model.addAttribute("productList", productDAO.list());
 		ModelAndView mv = new ModelAndView("AddProduct");
-		mv.addObject("AddProduct", 0);
+		mv.addObject("addProduct", 0);
 		return mv;
 	}
 
@@ -168,7 +169,7 @@ public class ProductController {
 	}
 
 	@RequestMapping("/{id}/addcart")
-	public String addCart(@PathVariable Integer id, Principal principal) {
+	public String addCart(@PathVariable Integer id, Principal principal, Model model) {
 		User user = userDAO.get(principal.getName());
 		user.setConfirmpassword(user.getPassword());
 		Product product = productDAO.get(id);
@@ -223,7 +224,6 @@ public class ProductController {
 	    	 System.out.println("addCartItem completed in product Controller");
 	     }
 	     
-	     //model.addAttribute("mycartList", cartItemDAO.getAll(id));
 	return "MyCart";
 }
 
