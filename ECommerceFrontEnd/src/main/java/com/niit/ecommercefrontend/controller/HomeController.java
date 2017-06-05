@@ -101,6 +101,12 @@ public class HomeController {
 		return "AdminHome";
 	}
 	
+	@RequestMapping("/Logout")
+	public String showLogout()
+	{
+		return "Logout";
+	}
+	
 	@RequestMapping("/Signup")
 	public ModelAndView showsignup()
 	{
@@ -145,7 +151,7 @@ public class HomeController {
 	@RequestMapping("/perform_logout")
 	public ModelAndView showLogout(HttpServletRequest request, HttpSession session){
 		System.out.println("logout");
-		ModelAndView mv = new ModelAndView("Home");
+		ModelAndView mv = new ModelAndView("Logout");
 		session.setAttribute("LogOutMessage","You have Successfully Logged Out.");
 		session.invalidate();
 		session = request.getSession(true);
@@ -153,6 +159,7 @@ public class HomeController {
 		mv.addObject("loggedOut","true");
 		return mv;
 	}
+	
 	
 	@ModelAttribute
 	public User returnObject()

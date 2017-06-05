@@ -20,11 +20,12 @@
 		
 		<!-- Access Denied Page -->
 		<access-denied-handler error-page="/index" />
+		
 		<form-login login-page="/Login" default-target-url="/"
 			login-processing-url="/perform_login" authentication-failure-url="/Login"
 			authentication-success-forward-url="/login_session_attributes" />
 		<logout logout-url="/perform_logout" invalidate-session="true"
-			logout-success-url="/" delete-cookies="JSESSIONID"/>
+			logout-success-url="/Logout" delete-cookies="JSESSIONID"/>
 
 		<!-- To disable the security tokens -->
 		<csrf disabled="true" />
