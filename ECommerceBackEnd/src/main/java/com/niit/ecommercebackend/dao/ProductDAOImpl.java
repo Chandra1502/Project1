@@ -48,7 +48,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Transactional
 	public boolean delete(Product product) {
 		try{
-			sessionFactory.openSession().delete(product);
+			sessionFactory.getCurrentSession().delete(product);
 			return true;
 			
 		}catch(Exception e)

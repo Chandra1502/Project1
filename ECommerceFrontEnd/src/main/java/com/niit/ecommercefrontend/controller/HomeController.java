@@ -125,7 +125,6 @@ public class HomeController {
 		session.setAttribute("LoggedInUser", user.getUsername());
 		session.setAttribute("LoggedInUserID", x);
 		session.setAttribute("LoggedIn", "true");
-		model.addAttribute("mycartList", cartDAO.getCartWithUserId(x));
 		
 		@SuppressWarnings("unchecked")
 		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
@@ -163,9 +162,7 @@ public class HomeController {
 	 //After clicking submit this page with data is opened and is sent to addus page
 	@RequestMapping(value = "/addus", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("user") User user, BindingResult result, HttpServletRequest request)
-
 	{
-
 		System.out.print(user.getConfirmpassword());
 		System.out.println(user.getPassword());
 
@@ -173,15 +170,11 @@ public class HomeController {
 		user.setRole("ROLE_USER");
 
 		if (user.getConfirmpassword().equals(user.getPassword()));
-
 		{
-
 			userDAO.saveOrUpdate(user);
-
 		}
-
+		
 		return "Login";
-
 	}
 }
 

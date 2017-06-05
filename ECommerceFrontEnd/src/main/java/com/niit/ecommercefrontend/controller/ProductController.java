@@ -144,12 +144,13 @@ public class ProductController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/deleteproduct{id}")
-	public ModelAndView deleteProduct(@PathVariable("id") String id, Model model) 
+	@RequestMapping(value = "/deleteproduct/{id}")
+	public ModelAndView deleteProduct(@PathVariable("id") int id, Model model) 
 	{
-		int i = Integer.parseInt(id);
-		product = productDAO.get(i);
-		productDAO.delete(product);
+		//int i = Integer.parseInt(id);
+		System.out.println("Inside delete product");
+		productDAO.delete(productDAO.get(id));
+		System.out.println("Inside delete product");
 		model.addAttribute("productList", productDAO.list());
 		ModelAndView mv = new ModelAndView("AddProduct");
 		mv.addObject("addProduct", 0);
