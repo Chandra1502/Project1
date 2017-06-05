@@ -31,13 +31,7 @@ $(document).ready(function(){
        	  "render":function(data,type,row){
        		  return "<a href='http://localhost:8083/ECommerceFrontEnd/"+row.product_id+"/ViewDetails' class='btn btn-primary'>View</a>";
        	  }
-         }/* ,
-       	
-        {"data":"",
-       	  "render":function(data,type,row){
-       		  return "<a href='http://localhost:8080/ECommerceFrontEnd/"+row.product_id+"/addcart' class='btn btn-primary'>Add to cart</a>";
-       	  }
-         }   */
+         }
                    
      ]
  });

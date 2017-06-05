@@ -1,30 +1,46 @@
 <%@include file="Header.jsp"%>
 
-<div class="content">
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-4"></div>
-		<div class="col-sm-4">
-			<center><b><h2 style="font-size: 350%; color: RGB(26, 92, 183);">Login</h2></b></center>
-			<br>
-			<form action="perform_login" method="post">
-				<div class="login" style="position: auto">
-					<div class="form-group">
-						<label for="username">User Name</label><br>
-						<input type="text"
-							name="username" placeholder="Enter your username">
-					</div>
-					<div class="form-group">
-						<label for="username">Password</label><br>
-						<input type="password"
-							name="password" placeholder="Enter your password">
-					</div>
-					<button class="btn-login">Login</button>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css"
+	href="/ECommerceFrontEnd/resources/css/login.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<div class="container">
+		<div class="wrapper">
+			<form action="perform_login" method="post" name="Login_Form"
+				class="form-signin">
+				<div class="row text-center bol">
+					<i class="fa fa-circle"></i>
 				</div>
+				<h3 class="form-signin-heading text-center">
+					<img src="/ECommerceFrontEnd/resources/images/TMLogo.jpg"
+						alt="TouchM" />
+				</h3>
+				<hr class="spartan">
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1"> <i
+						class="fa fa-user"></i>
+					</span> <input type="email" class="form-control" name="username"
+						placeholder="abc@xxx.com" required />
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1"> <i
+						class="fa fa-lock"></i>
+					</span> <input type="password" class="form-control" name="password"
+						placeholder="Password" required />
+				</div>
+				<button class="btn btn-lg btn-primary btn-block" name="Submit"
+					value="Entrar" type="Submit">Submit</button>
 			</form>
 		</div>
-		<div class="col-sm-4"></div>
 	</div>
-</div>
-</div>
+
+</body>
+</html>
+
 <%@include file="Footer.jsp"%>
