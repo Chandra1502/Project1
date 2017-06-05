@@ -40,12 +40,6 @@ public class Product {
 	@Column(name="supplier_id")
 	private int supplier_id;
 	
-	/*@Column(name="category_name")
-	private int category_name;
-	
-	@Column(name="supplier_name")
-	private int supplier_name;*/
-	
 	@ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
 	@JoinColumn(name="category_id",insertable=false,updatable=false)
 	private Category category;

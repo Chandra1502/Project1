@@ -1,18 +1,16 @@
 package com.niit.ecommercebackend.model;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -22,22 +20,22 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userid;
-	@NotNull(message = "username cannot be blank")
+	@NotBlank(message = "username cannot be blank")
 	private String username;
-	@NotNull(message = "password cannot be blank")
+	@NotBlank(message = "password cannot be blank")
 	private String password;
-	@NotNull(message = "address cannot be blank")
+	@NotBlank(message = "address cannot be blank")
 	private String address;
-	@NotNull(message = "emailid cannot be blank")
+	@NotBlank(message = "emailid cannot be blank")
 	private String emailid;
-	@NotNull(message = "phno cannot be blank")
+	@NotBlank(message = "phno cannot be blank")
 	private String phno;
-	@NotNull(message = "role cannot be blank")
+	@NotBlank(message = "role cannot be blank")
 	private String role;
 	private String enabled;
 	
-	@Transient 
-	@NotNull(message = "confirm password cannot be blank")
+	@Transient
+	@NotBlank(message = "confirm password cannot be blank")
 	private String confirmpassword;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")

@@ -1,13 +1,12 @@
 package com.niit.ecommercebackend.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -18,10 +17,9 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int category_id;
-	//@Id
-	@Column(nullable = false)
+	@NotBlank
 	private String category_name;
-	@Column(nullable = false)
+	@NotBlank
 	private String category_description;
 	public int getCategory_id() {
 		return category_id;

@@ -5,8 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -16,10 +16,10 @@ public class Supplier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int supplier_id;
-	//@Id
-	@NotNull(message = "supplier name cannot be blank")
+
+	@NotBlank(message = "supplier name cannot be blank")
 	private String supplier_name;
-	@NotNull(message = "supplier location cannot be blank")
+	@NotBlank(message = "supplier location cannot be blank")
 	private String supplier_location;
 	public int getSupplier_id() {
 		return supplier_id;
