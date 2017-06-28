@@ -19,7 +19,7 @@ import com.niit.ecommercebackend.model.Product;
 
 public class CartTestCase {
 	
-	/*private static AnnotationConfigApplicationContext context;
+/*	private static AnnotationConfigApplicationContext context;
 	private static UserDAO userDAO;
 	private static CartDAO cartDAO;
 	private static ProductDAO productDAO;
@@ -55,7 +55,8 @@ public class CartTestCase {
 		List<CartItem> cartItems = new ArrayList<CartItem>();
 		cartItems.add(cartItem);
 		cart.setCartitems(cartItems);
-		
+		cartDAO.addCart(cart);
+		cartItemDAO.addCartItem(cartItem);
 		assertEquals("success", true, cartDAO.addCart(cart));
 		assertEquals("success", true, cartItemDAO.addCartItem(cartItem));
 	}*/

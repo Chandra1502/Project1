@@ -9,11 +9,11 @@ public class CategoryTest {
 
 	public static void main(String[] args) {
 		
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		/*AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com");
 		context.refresh();
 		
-		/*CategoryDAO categoryDAO = (CategoryDAO)context.getBean("categoryDAO");
+		CategoryDAO categoryDAO = (CategoryDAO)context.getBean("categoryDAO");
 		Category category = (Category)context.getBean("category");
 		category.setCategory_name("Android");
 		category.setCategory_description("Welcome to the world of Android");
